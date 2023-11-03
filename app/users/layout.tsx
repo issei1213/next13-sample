@@ -1,12 +1,8 @@
-import type { ReactNode } from 'react'
-import { Footer, Header } from '@/app/_components/navigation'
-
-export default function JobsLayout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className='flex flex-col h-screen justify-between'>
-      <Header />
-      <main className='container mx-auto mt-8'>{children}</main>
-      <Footer />
-    </div>
+    <section>
+      <h1 className='text-2xl'>User一覧</h1>
+      {children}
+    </section>
   )
 }

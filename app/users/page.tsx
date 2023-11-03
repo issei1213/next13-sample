@@ -6,13 +6,32 @@ import { AuthInfo } from '@/app/users/components/AuthInfo'
 import RefreshBtn from '@/app/_components/button/refresh-button'
 
 export async function generateMetadata(): Promise<Metadata> {
-  // fetch data
   const usersList = await getUserList()
 
   return {
     title: `ユーザー一覧合`,
     description: `ユーザー一覧合件数: ${usersList.length}`,
   }
+}
+
+async function UserList() {
+  const userList = await getUserList()
+
+  return (
+    <div className='flex flex-col'>
+      {userList.map((user) => (
+        <div
+          key={user.id}
+          className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2'
+        >
+          <div className='mb-4'>
+            <p className='text-xl font-semibold'>{user.name}</p>
+            <p className='text-gray-600'>{user.email}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default async function Page() {
@@ -38,21 +57,7 @@ export default async function Page() {
       <RefreshBtn />
 
       <section>
-        <h1 className='text-2xl'>User一覧</h1>
-
-        <div className='flex flex-col'>
-          {userList.map((user) => (
-            <div
-              key={user.id}
-              className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2'
-            >
-              <div className='mb-4'>
-                <p className='text-xl font-semibold'>{user.name}</p>
-                <p className='text-gray-600'>{user.email}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <UserList />
       </section>
     </>
   )

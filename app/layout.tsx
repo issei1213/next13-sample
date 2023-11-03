@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { Footer, Header } from '@/app/_components/navigation'
 import { AppProvider } from '@/store/appContext'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -14,7 +15,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='ja'>
       <body className={inter.className}>
-        <AppProvider>{children}</AppProvider>
+        <div className='flex flex-col h-screen justify-between'>
+          <Header />
+          <AppProvider>
+            <main className='container mx-auto mt-8'>{children}</main>
+          </AppProvider>
+          <Footer />
+        </div>
       </body>
     </html>
   )

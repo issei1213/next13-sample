@@ -11,14 +11,14 @@ export function Header() {
           <ul className='flex'>
             <li className='ml-6'>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link href='#' className='hover:text-gray-200'>
-                ホーム
+              <Link href='/' className='hover:text-gray-200'>
+                home
               </Link>
             </li>
             <li className='ml-6'>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Link href='#' className='hover:text-gray-200'>
-                サービス
+              <Link href='users' className='hover:text-gray-200'>
+                users
               </Link>
             </li>
             <li className='ml-6'>
