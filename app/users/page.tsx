@@ -1,6 +1,17 @@
 import { notFound } from 'next/navigation'
 import getUserList from '@/app/users/_api/getUserList'
 import { ArticleJsonLd } from 'next-seo'
+import type { Metadata } from 'next'
+
+export async function generateMetadata(): Promise<Metadata> {
+  // fetch data
+  const usersList = await getUserList()
+
+  return {
+    title: `ユーザー一覧合`,
+    description: `ユーザー一覧合件数: ${usersList.length}`,
+  }
+}
 
 export default async function Page() {
   const userList = await getUserList()
@@ -11,6 +22,15 @@ export default async function Page() {
 
   return (
     <>
+      <ArticleJsonLd
+        useAppDir
+        url='/users'
+        title={`ユーザー一覧合件数: ${userList.length}`}
+        images={['/']}
+        datePublished='2023/11/03'
+        authorName='yamada'
+        description='ユーザー一覧のページ'
+      />
       <section>
         <h1 className='text-2xl'>User一覧</h1>
 
@@ -28,15 +48,6 @@ export default async function Page() {
           ))}
         </div>
       </section>
-      <ArticleJsonLd
-        useAppDir
-        url='/users'
-        title={`ユーザー一覧合件数: ${userList.length}`}
-        images={['/']}
-        datePublished='2023/11/03'
-        authorName='yamada'
-        description='ユーザー一覧のページ'
-      />
     </>
   )
 }
