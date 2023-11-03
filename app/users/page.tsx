@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import getUserList from '@/app/users/_api/getUserList'
 import { ArticleJsonLd } from 'next-seo'
 import type { Metadata } from 'next'
-import { AuthInfo } from '@/app/users/components/AuthInfo'
+// import { AuthInfo } from '@/app/users/components/AuthInfo'
 import RefreshBtn from '@/app/_components/button/refresh-button'
 
 export async function generateMetadata(): Promise<Metadata> {
