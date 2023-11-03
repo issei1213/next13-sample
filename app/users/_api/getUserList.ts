@@ -10,7 +10,7 @@ export default async function getUserList(): Promise<User[]> {
     cache: 'no-store',
   })
 
-  await sleep(1000)
+  await sleep(1500)
 
   const users = await response.json()
 

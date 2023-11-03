@@ -14,27 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-async function UserList() {
-  const userList = await getUserList()
-
-  return (
-    <div className='flex flex-col'>
-      {userList.map((user) => (
-        <div
-          key={user.id}
-          className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2'
-        >
-          <div className='mb-4'>
-            <p className='text-xl font-semibold'>{user.name}</p>
-            <p className='text-gray-600'>{user.email}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-export default async function Page() {
+export default async function UsersPage() {
   const userList = await getUserList()
 
   if (userList.length === 0) {
@@ -52,13 +32,20 @@ export default async function Page() {
         authorName='yamada'
         description='ユーザー一覧のページ'
       />
-      <AuthInfo />
-
       <RefreshBtn />
-
-      <section>
-        <UserList />
-      </section>
+      <div className='flex flex-col'>
+        {userList.map((user) => (
+          <div
+            key={user.id}
+            className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2'
+          >
+            <div className='mb-4'>
+              <p className='text-xl font-semibold'>{user.name}</p>
+              <p className='text-gray-600'>{user.email}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   )
 }
