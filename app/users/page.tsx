@@ -31,7 +31,7 @@ export default async function Page() {
       <ArticleJsonLd
         useAppDir
         url='/users'
-        title='ユーザー一覧'
+        title={`ユーザー一覧合件数: ${userList.length}`}
         images={['/']}
         datePublished='2023/11/03'
         authorName='yamada'
