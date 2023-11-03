@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import getUserList from '@/app/users/_api/getUserList'
 import { ArticleJsonLd } from 'next-seo'
 import type { Metadata } from 'next'
+import { AuthInfo } from '@/app/users/components/AuthInfo'
 
 export async function generateMetadata(): Promise<Metadata> {
   // fetch data
@@ -31,6 +32,8 @@ export default async function Page() {
         authorName='yamada'
         description='ユーザー一覧のページ'
       />
+      <AuthInfo />
+
       <section>
         <h1 className='text-2xl'>User一覧</h1>
 
