@@ -1,6 +1,7 @@
 'use client'
 
 import { useAppContext } from '@/store/appContext'
+import RefreshBtn from '@/app/_components/button/refresh-button'
 
 export function AuthInfo() {
   const { state, setState } = useAppContext()
@@ -25,6 +26,9 @@ export function AuthInfo() {
       <button type='button' onClick={onClickButton} className='bg-amber-400 p-2'>
         GlobalStateを更新
       </button>
+
+      <RefreshBtn />
+      <br />
     </div>
   )
 }

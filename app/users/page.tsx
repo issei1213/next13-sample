@@ -3,6 +3,7 @@ import getUserList from '@/app/users/_api/getUserList'
 import { ArticleJsonLd } from 'next-seo'
 import type { Metadata } from 'next'
 import { AuthInfo } from '@/app/users/components/AuthInfo'
+import RefreshBtn from '@/app/_components/button/refresh-button'
 
 export async function generateMetadata(): Promise<Metadata> {
   // fetch data
@@ -33,6 +34,8 @@ export default async function Page() {
         description='ユーザー一覧のページ'
       />
       <AuthInfo />
+
+      <RefreshBtn />
 
       <section>
         <h1 className='text-2xl'>User一覧</h1>
