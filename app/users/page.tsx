@@ -4,17 +4,18 @@ import { ArticleJsonLd } from 'next-seo'
 import type { Metadata } from 'next'
 // import { AuthInfo } from '@/app/users/components/AuthInfo'
 import RefreshBtn from '@/app/_components/button/refresh-button'
+import { Suspense } from 'react'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const usersList = await getUserList()
+  // const usersList = await getUserList()
 
   return {
     title: `ユーザー一覧合`,
-    description: `ユーザー一覧合件数: ${usersList.length}`,
+    description: `ユーザー一覧のページです`,
   }
 }
 
-export default async function UsersPage() {
+async function UserList() {
   const userList = await getUserList()
 
   if (userList.length === 0) {
@@ -32,7 +33,6 @@ export default async function UsersPage() {
         authorName='yamada'
         description='ユーザー一覧のページ'
       />
-      <RefreshBtn />
       <div className='flex flex-col'>
         {userList.map((user) => (
           <div
@@ -46,6 +46,32 @@ export default async function UsersPage() {
           </div>
         ))}
       </div>
+    </>
+  )
+}
+
+export default async function UsersPage() {
+  // const userList = await getUserList()
+  //
+  // if (userList.length === 0) {
+  //   return notFound()
+  // }
+
+  return (
+    <>
+      <RefreshBtn />
+      {/* <ArticleJsonLd */}
+      {/*  useAppDir */}
+      {/*  url='/users' */}
+      {/*  title={`ユーザー一覧合件数: ${userList.length}`} */}
+      {/*  images={['/']} */}
+      {/*  datePublished='2023/11/03' */}
+      {/*  authorName='yamada' */}
+      {/*  description='ユーザー一覧のページ' */}
+      {/* /> */}
+      <Suspense fallback={<div>Suspense loading</div>}>
+        <UserList />
+      </Suspense>
     </>
   )
 }
